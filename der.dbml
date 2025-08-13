@@ -1,0 +1,34 @@
+Table Categoria {
+  id_categoria int [pk, increment]
+  nome varchar
+}
+
+Table Produto {
+  id_produto int [pk, increment]
+  nome varchar
+  id_categoria int [ref: > Categoria.id_categoria]
+  preco decimal
+  quantidade_estoque int
+}
+
+Table Fornecedor {
+  id_fornecedor int [pk, increment]
+  nome varchar
+  telefone varchar
+  email varchar
+}
+
+Table Compra {
+  id_compra int [pk, increment]
+  id_produto int [ref: > Produto.id_produto]
+  id_fornecedor int [ref: > Fornecedor.id_fornecedor]
+  quantidade int
+  data_compra date
+}
+
+Table Venda {
+  id_venda int [pk, increment]
+  id_produto int [ref: > Produto.id_produto]
+  quantidade int
+  data_venda date
+}
